@@ -1,31 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import SingleDay from './SingleDay';
 
 function Weather() {
-
-  const [forecast, setForecast] = useState(null);
+  const [weather, setWeather] = useState();
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
 
-      const ApiResponse = await fetch("http://api.openweathermap.org/data/2.5/find?q=London&units=metric&APPID=acf36c53e0cb19a243cddafb31118863");
-      const data = await ApiResponse.json();
-      console.log(data);
-      
-      setForecast(data);
+      const ApiResponse = await axios.get("https://ipapi.co/json/");
+      const lat = ApiResponse.data.latitude;
+      const lon = ApiResponse.data.longitude;
+      const callWeather = await axios.get(`https://api.apixu.com/v1/forecast.json?key=043d3a0fb3e945d0a4d181246162911&q=${lat},${lon}&days=5`);
+
+      setWeather(callWeather);
     }
     fetchData();
-   
+
   }, []);
 
+  const forecast = weather ? (
+    weather.data.forecast.forecastday.map((weatherData, index) => {
+      return (
+        <SingleDay weatherData={weatherData} key={index} index={index} />
+      )
+    })) : "Unfortunately an error has occured, the weather forecast is currently unavailable"
+
+  const locationName = <h2>{weather ? weather.data.location.region : "Unfortunately an error has occured, the weather forecast is currently unavailable"}</h2>
+
+  const forecastDetail = weather ? (<article>
+    <img src={`https:${weather.data.current.condition.icon}`} alt='example weather condition, clear sunny blue skies'></img>
+    <h3>Currently {weather.data.current.temp_c} Cº</h3>
+    <p>{weather.data.current.wind_mph}</p>
+  </article>) : "Unfortunately an error has occured, the weather forecast is currently unavailable"
+
   return (
-    <div className='weather'>
-      <h1 className='city'>{forecast ? forecast.list[0].name : 'loading...'}</h1>
-      <img className='icon' src={ forecast ? `http://openweathermap.org/img/wn/${forecast.list[0].weather[0].icon}@2x.png` : 'loading...'} alt='weather icon'></img>
-      <p className='temperature'>{forecast ?  Math.round(forecast.list[0].main.temp) : 'loading...'} oC</p>
-      <p className='description'>{forecast ? forecast.list[0].weather[0].description : 'loading...'}</p>
-    </div>
+    <section className='weather'>
+      {locationName}
+      {forecastDetail}
+      {forecast}
+    </section>
   )
 }
 
 export default Weather
-

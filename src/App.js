@@ -5,12 +5,10 @@ import Weather from './components/Weather';
 
 function App() {
   return (
-    <div>
-      <div>
+      <main role="main">
         <h1 className='header'>Whats the weather like?</h1>
-        <Weather />
-      </div>
-    </div>
+        <Weather/>
+      </main>
   )
 }
 
