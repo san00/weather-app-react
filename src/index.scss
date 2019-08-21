@@ -1,13 +1,12 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+@import 'src/sass/abstracts/variables';
+
+@import 'src/sass/base/reset';
+@import 'src/sass/base/typography';
+
+@import 'src/sass/components/current-day';
+@import 'src/sass/components/footer';
+@import 'src/sass/components/header';
+@import 'src/sass/components/location';
+@import 'src/sass/components/single-day';
+@import 'src/sass/components/weather';

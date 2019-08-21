@@ -1,0 +1,34 @@
+.current {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $spacing-l;
+    flex-flow: wrap;
+}
+
+.current__container {
+    align-items: center;
+    border-radius: 0.2em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin: $spacing-m;
+    padding: $spacing-m;
+    width: 20em;
+}
+.current__icon,
+.current__weekday {
+    margin-bottom: $spacing-s;
+}
+
+.current__description,
+.current__weekday {
+    font-weight: 300;
+}
+.current__icon {
+    background: hsl(0, 0%, 97%);
+    border-radius: 100%;
+}
+.current__temp {
+    color: $secondary-text-colour;
+    margin-bottom: $spacing-l;
+}
