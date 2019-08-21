@@ -1,0 +1,13 @@
+.footer{
+    margin-left: $spacing-l;
+    padding: $spacing-m;
+    display: flex;
+    position: relative;
+    top: 4em;
+}
+
+.footer__text{
+    padding-left: $spacing-xs;
+    cursor: pointer;
+    color: $secondary-text-colour;
+}

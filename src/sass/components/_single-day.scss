@@ -1,0 +1,45 @@
+.single-day {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $spacing-xxl;
+    margin-left: $spacing-l;
+    margin-right: $spacing-l;
+    flex-flow: wrap;
+}
+
+.single-day__container {
+    align-items: center;
+    background-color: #fefefe;
+    border-radius: 0.2em;
+    box-shadow: 0 2px 3px 0 hsla(0, 0%, 6%, 0.3);
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: $spacing-m;
+    padding: $spacing-m;
+    width: 20em;
+}
+
+.single-day__description,
+.single-day__weekday {
+    font-weight: 300;
+}
+
+.single-day__temp-container {
+    display: flex;
+}
+.single-day__temp-h {
+    color: $secondary-text-colour;
+    padding-right: $spacing-s;
+}
+
+.single-day__temp-l {
+    font-weight: 400;
+}
+
+.single-day__temp-container,
+.single-day__image,
+.single-day__weekday {
+    margin-bottom: $spacing-s;
+}
